@@ -1,6 +1,6 @@
 import re
 
-first_digit_regex = re.compile(r"[^\d]*?(one|two|three|four|five|six|seven|eight|nine|\d).*$")
+first_digit_regex = re.compile(r".*?(one|two|three|four|five|six|seven|eight|nine|\d).*$")
 last_digit_regex = re.compile(r".*(one|two|three|four|five|six|seven|eight|nine|\d).*?$")
 
 digits = {
@@ -23,6 +23,5 @@ with open("data") as f:
         first_digit = digits[first_digit] if first_digit in digits else first_digit
         last_digit = last_digit_regex.match(line).groups()[0]
         last_digit = digits[last_digit] if last_digit in digits else last_digit
-        print(first_digit + last_digit)
         total += int(first_digit + last_digit)
     print(total)
