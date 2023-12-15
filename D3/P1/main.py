@@ -65,7 +65,7 @@ class Parser:
         return self.numbers, self.symbols_coords
 
 
-with open("D3/P1/data") as f:
+with open("D3/data") as f:
     parser = Parser(f)
     numbers, symbols = parser.parse_schematic()
     part_numbers = filter(lambda x: x.is_part_number(symbols), numbers)
