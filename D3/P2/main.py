@@ -5,9 +5,10 @@ class Coord:
         self.x = x
         self.y = y
 
-    neighbours = lambda self:  [Coord(self.x - 1, self.y), Coord(self.x + 1, self.y),
-                                Coord(self.x - 1, self.y - 1), Coord(self.x, self.y - 1), Coord(self.x + 1, self.y - 1), 
-                                Coord(self.x - 1, self.y + 1), Coord(self.x, self.y + 1), Coord(self.x + 1, self.y + 1)]
+    def neighbours(self):
+        return [Coord(self.x - 1, self.y), Coord(self.x + 1, self.y),
+                Coord(self.x - 1, self.y - 1), Coord(self.x, self.y - 1), Coord(self.x + 1, self.y - 1), 
+                Coord(self.x - 1, self.y + 1), Coord(self.x, self.y + 1), Coord(self.x + 1, self.y + 1)]
     
     def __eq__(self, __value: object) -> bool:
         return type(__value) is Coord and self.x == __value.x and self.y == __value.y
