@@ -4,7 +4,7 @@ import math
 # -x^2 + bx - c = 0 solving for x given a known b and c gives us the margin of error for that race
 # and luckily I had to learn the quadratic formula for my GCSE :)
 
-def solve_quadratic_real(a, b, c) -> list[float]:
+def solve_quadratic_real(a: float, b: float, c: float) -> list[float]:
     discriminant = pow(b, 2) - 4 * a * c
     if discriminant <= 0:
         return []
