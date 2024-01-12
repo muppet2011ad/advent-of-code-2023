@@ -13,7 +13,7 @@ card_values = {
     "8": 8,
     "9": 9,
     "T": 10,
-    "J": 11,
+    "J": 1,
     "Q": 12,
     "K": 13,
     "A": 14
@@ -67,10 +67,14 @@ class Hand:
         
     @staticmethod
     def get_hand_type(cards: list[str]) -> HandType:
-        counted_cards = Counter(cards)
-        common_cards = counted_cards.most_common()[:2]
-        if len(common_cards) == 1:
+        num_jokers = cards.count("J")
+        filtered_cards = filter(lambda x: x != "J", cards)
+        counted_cards = Counter(filtered_cards)
+        if len(counted_cards) <= 1:
             return HandType.K5
+        joker_card = counted_cards.most_common()[0][0]
+        counted_cards.update(num_jokers * joker_card)
+        common_cards = counted_cards.most_common()[:2]
         pair1, pair2 = common_cards
         match pair1[1]:
             case 5:
