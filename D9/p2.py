@@ -16,10 +16,7 @@ def predict_forwards(seq: list[int]) -> int:
     return difference_lists[0][-1]
 
 def predict_backwards(seq: list[int]) -> int:
-    difference_lists = all_differences(seq)
-    for lower_level, higher_level in pairwise(difference_lists[::-1]):
-        higher_level.insert(0, higher_level[0] - lower_level[0])
-    return difference_lists[0][0]
+    return predict_forwards(seq[::-1])
 
 with open("D9/data") as f:
     lines = f.readlines()
